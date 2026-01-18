@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+/* Premium Gold Text */
+.gold-text {
+  background: linear-gradient(120deg, #c9a44c, #f5e7a1, #b08d3f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-stroke {
+  -webkit-text-stroke: 1px rgba(176, 141, 63, 0.35);
+}
+
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(48px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.9s cubic-bezier(.22,.61,.36,1) both;
+}
+
+.animate-fade-left {
+  animation: fadeLeft 0.9s ease-out both;
+}
+
+.animate-fade-right {
+  animation: fadeRight 0.9s ease-out both;
+}
+
+/* delays */
+.delay-100 { animation-delay: .1s }
+.delay-200 { animation-delay: .2s }
+.delay-300 { animation-delay: .3s }
+.delay-400 { animation-delay: .4s }
+.delay-600 { animation-delay: .6s }
+
+
+
+/* ===== Inhale / Exhale Design ===== */
+
+@keyframes inhale {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.85);
+    opacity: 0.5;
+  }
+}
+
+@keyframes exhale {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.85);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-inhale {
+  animation: inhale 6s ease-in-out infinite;
+}
+
+.animate-exhale {
+  animation: exhale 6s ease-in-out infinite;
+}
+
+.delay-half {
+  animation-delay: 3s;
+}
+
+
+@keyframes fadeUpClean {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-clean {
+  animation: fadeUpClean 0.8s ease-out both;
+}
+
+
+/* ===== Pranayama Dynamic Breath ===== */
+
+@keyframes breathGrow {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  50% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.6; }
+}
+
+@keyframes progressFill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+.animate-breath-grow {
+  animation: breathGrow 4s ease-in-out infinite;
+}
+
+.animate-progress {
+  animation: progressFill linear infinite;
+}
+
+
+/*=====about===*/
+
+/* global.css */
+.bg-texture {
+  background-image: url("/textures/subtle-paper.png");
+  background-repeat: repeat;
+  background-size: 220px;
+}
