@@ -75,8 +75,8 @@ export default function Footer() {
   }}
 >
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/65" />
+        {/* Overlay
+        <div className="absolute inset-0 bg-black/65" /> */}
 
         {/* CONTENT */}
         <div className="relative z-10 px-5 py-16 space-y-16 md:px-20 md:py-24 md:grid md:grid-cols-3 md:gap-16 md:space-y-0">
