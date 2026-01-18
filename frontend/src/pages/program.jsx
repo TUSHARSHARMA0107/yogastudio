@@ -6,18 +6,18 @@ import Meditation from "./yoga/Meditation";
 import Pranayama from "./yoga/Pranayama";
 import SoundHealing from "./yoga/SoundHealing ";
 ///import
-
+import Yoga from "./yoga/Yoga";
 const Program = () => {
   return (
     <>
-     <AerialYoga/> 
+     <AerialYoga/>
      <CommercialBooking/>
      <CorporateBooking/>
      <Meditation/>
      <Pranayama/>
-     <SoundHealing/>
-     {/* <Yoga/>  */}
-       <Footer/> 
+<SoundHealing/>
+     <Yoga/>  
+ <Footer/>
     </>
   );
 };

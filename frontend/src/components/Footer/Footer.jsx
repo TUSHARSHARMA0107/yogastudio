@@ -71,7 +71,7 @@ export default function Footer() {
     md:bg-center
   "
   style={{
-    backgroundImage: "url('/footer.jpeg')"
+    backgroundImage: "url('./yy.jpg')"
   }}
 >
 
