@@ -74,7 +74,7 @@ export default function Footer() {
     backgroundImage: "url('/footer.jpeg')"
   }}
 >
->
+
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/65" />
 

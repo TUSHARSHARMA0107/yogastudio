@@ -5,7 +5,7 @@ import CorporateBooking from "./yoga/CorporateBooking";
 import Meditation from "./yoga/Meditation";
 import Pranayama from "./yoga/Pranayama";
 import SoundHealing from "./yoga/SoundHealing ";
-// import Yoga from "./yoga/yoga";
+import Yoga from  "./yoga/Yoga";
 
 const Program = () => {
   return (
@@ -16,7 +16,7 @@ const Program = () => {
      <Meditation/>
      <Pranayama/>
      <SoundHealing/>
-     {/* <Yoga/> */}
+     <Yoga/> 
        <Footer/> 
     </>
   );
