@@ -63,7 +63,7 @@ const Yoga = () => {
           <p className="text-stone-400 font-light italic">Every element is curated to support sensory neutrality.</p>
         </div>
         
-        <div className="max-w-[1400px] mx-auto px-6">
+        <div className="max-w-350px mx-auto px-6">
           <div className="rounded-[50px] overflow-hidden shadow-2xl bg-white p-2">
             <ImageCarousel
               images={[
