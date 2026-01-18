@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MENU } from "./MenuConfig";
+import { MENU } from "../Navbar/MenuConfig";
 
 export default function MobileMenu({ open, onClose }) {
   const [openIndex, setOpenIndex] = useState(null);
