@@ -8,18 +8,26 @@ export default function Navbar() {
   const [overHero, setOverHero] = useState(true);
 
   // HERO BREAK OBSERVER
-  useEffect(() => {
-    const marker = document.getElementById("hero-break");
-    if (!marker) return;
+useEffect(() => {
+  const heroSection = document.getElementById("hero-section"); // Observe the whole hero
+  if (!heroSection) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => setOverHero(!entry.isIntersecting),
-      { threshold: 0 }
-    );
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      // Logic: If the hero is NO LONGER intersecting the viewport's top trigger line
+      setOverHero(!entry.isIntersecting);
+    },
+    {
+      threshold: 0,
+      // Focus on the top 10% of the viewport. This forces the trigger 
+      // as soon as the hero leaves the top, regardless of address bar shifts.
+      rootMargin: "-10% 0px -90% 0px" 
+    }
+  );
 
-    observer.observe(marker);
-    return () => observer.disconnect();
-  }, []);
+  observer.observe(heroSection);
+  return () => observer.disconnect();
+}, []);
 
   // Close mobile drawer on resize
   useEffect(() => {
