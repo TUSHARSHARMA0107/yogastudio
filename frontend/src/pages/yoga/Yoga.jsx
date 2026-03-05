@@ -1,120 +1,192 @@
-// pages/Yoga.jsx
-
-
+import React from "react";
+import { motion } from "framer-motion";
 import VideoHero from "../../components/program/VideoHero";
-import ImageCarousel from "../../components/program/ImageCarousel";
 
 const Yoga = () => {
+  const reveal = {
+    initial: { opacity: 0, y: 40 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-100px" },
+    transition: { duration: 0.8 },
+  };
+
   return (
-    <main className="bg-[#FDFDFB] text-[#1A1A1A] overflow-hidden selection:bg-[#E5E7EB]">
-      
-      {/* 01. HERO — IMMERSIVE ENTRANCE */}
+    <main className="bg-[#FDFDFB] text-[#1A1A1A] overflow-x-hidden selection:bg-stone-200">
+
+      {/* ================= HERO ================= */}
       <VideoHero
-        title="Traditional Yoga Practice"
+        title="The Art of Presence"
         subtitle="A high-fidelity union of movement, breath, and profound mental clarity."
-        videoSrc="/videos/yoga-premium.mp4"
+        videoSrc="https://player.vimeo.com/external/449626361.sd.mp4?s=de2c8e0f08f0e1c5e2c6fbb9c9c1d6e6c4f6b4a3&profile_id=164"
         whatsappMessage="Hello, I would like to inquire about a Private Yoga session."
       />
 
-      {/* 02. THE NARRATIVE — BENTO GRID 2026 */}
-      <section className="py-32 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[300px]">
-            
-            {/* LARGE TEXT CARD */}
-            <div className="md:col-span-8 md:row-span-1 bg-stone-50 rounded-[40px] p-12 flex flex-col justify-center border border-stone-100 hover:shadow-xl transition-all duration-700">
-               <span className="text-[10px] tracking-[0.5em] uppercase text-stone-400 font-bold mb-4">The Discipline</span>
-               <h2 className="text-4xl md:text-5xl font-light tracking-tight">Strength in <span className="italic font-serif">Stillness.</span></h2>
-            </div>
+      {/* ================= CONCEPT GRID ================= */}
+      <section className="py-32 px-6 md:px-12 max-w-[1400px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 auto-rows-[minmax(300px,_auto)]">
 
-            {/* AMBIENT VIDEO BLOCK (Looping Cinemagraph) */}
-            <div className="md:col-span-4 md:row-span-2 bg-stone-200 rounded-[40px] overflow-hidden group">
-              <video 
-                autoPlay muted loop playsInline 
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100"
-              >
-                <source src="/videos/yoga-ambient-loop.mp4" type="video/mp4" />
-              </video>
-            </div>
+          {/* LARGE TEXT BLOCK */}
+          <motion.div
+            {...reveal}
+            className="md:col-span-8 bg-stone-50 rounded-[40px] p-12 md:p-20 border border-stone-100 flex flex-col justify-center"
+          >
+            <span className="text-[10px] tracking-[0.6em] uppercase text-stone-400 font-bold mb-6">
+              The Discipline
+            </span>
 
-            {/* PRACTICE PHILOSOPHY CARD */}
-            <div className="md:col-span-4 md:row-span-2 bg-white rounded-[40px] p-10 border border-stone-100 shadow-sm flex flex-col justify-between">
-               <p className="text-xl leading-relaxed text-stone-500 font-light">
-                 Yoga is the technology of the self. We facilitate a practice that bridges 
-                 ancient lineage with modern physiological understanding.
-               </p>
-               <div className="h-px bg-stone-100 w-full" />
-               <p className="text-xs uppercase tracking-widest font-bold">2026 Practice Protocol</p>
-            </div>
-
-            {/* SECONDARY IMAGE FOCUS */}
-            <div className="md:col-span-4 md:row-span-1 bg-stone-100 rounded-[40px] overflow-hidden">
-               <img src="/images/yoga-detail.jpg" alt="Yoga detail" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* 03. ATMOSPHERE — THE CINEMATIC CAROUSEL */}
-      <section className="py-24 bg-[#FAF9F6]">
-        <div className="max-w-6xl mx-auto px-6 text-center mb-16">
-          <h3 className="text-3xl font-light tracking-tighter mb-4">The Sanctuary</h3>
-          <p className="text-stone-400 font-light italic">Every element is curated to support sensory neutrality.</p>
-        </div>
-        
-        <div className="max-w-350px mx-auto px-6">
-          <div className="rounded-[50px] overflow-hidden shadow-2xl bg-white p-2">
-            <ImageCarousel
-              images={[
-                "/images/yoga-gallery-1.jpg",
-                "/images/yoga-gallery-2.jpg",
-                "/images/yoga-gallery-3.jpg",
-                "/images/yoga-gallery-4.jpg",
-                "/images/yoga-gallery-5.jpg",
-              ]}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* 04. CONCIERGE — THE PREMIUM CONTACT */}
-      <section className="py-48 px-6 bg-white relative">
-        {/* Decorative Fluid Shape */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-stone-50 rounded-full blur-[120px] pointer-events-none" />
-
-        <div className="max-w-3xl mx-auto text-center relative z-10 space-y-12">
-          <div className="space-y-4">
-             <h4 className="text-5xl md:text-6xl font-light tracking-tighter">Initiate Your Flow.</h4>
-             <p className="text-stone-500 text-lg font-light max-w-xl mx-auto">
-               Available for private 1:1 sessions or intimate group practices. 
-               Experience yoga as it was meant to be: personal, profound, and precise.
-             </p>
-          </div>
-
-          {/* Premium Animated Button */}
-          <div className="flex flex-col items-center gap-8">
-            <a
-              href="wa.me"
-              className="group relative inline-flex items-center justify-center px-24 py-6 bg-[#1A1A1A] text-white rounded-full 
-                         overflow-hidden transition-all duration-500 hover:px-28"
-            >
-              <span className="absolute inset-0 w-0 bg-stone-700 transition-all duration-500 ease-out group-hover:w-full" />
-              <span className="relative z-10 text-[11px] tracking-[0.4em] uppercase font-bold">
-                Request Concierge Booking
+            <h2 className="text-5xl md:text-7xl font-light tracking-tight leading-[1.05]">
+              Strength in{" "}
+              <span className="italic font-serif text-stone-800">
+                Stillness.
               </span>
-            </a>
-            
-            <div className="flex gap-12 pt-12 border-t border-stone-100 w-full justify-center text-[10px] tracking-widest text-stone-400 uppercase font-medium">
-               <span>Vinyasa</span>
-               <span>•</span>
-               <span>Hatha</span>
-               <span>•</span>
-               <span>Restorative</span>
-            </div>
+            </h2>
+
+            <p className="mt-10 text-lg text-stone-500 max-w-2xl leading-relaxed">
+              Yoga is not fitness. It is neurological recalibration.
+              We integrate lineage-based practice with modern physiological awareness.
+            </p>
+          </motion.div>
+
+          {/* VIDEO ATMOSPHERE BLOCK */}
+          <motion.div
+            {...reveal}
+            transition={{ delay: 0.2 }}
+            className="md:col-span-4 md:row-span-2 rounded-[40px] overflow-hidden bg-black"
+          >
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover opacity-80 hover:opacity-100 transition duration-700"
+            >
+              <source
+                src="https://player.vimeo.com/external/434045526.sd.mp4?s=3cb9c6a3e2d76e9e8b4f6a3b0c1c7c2d1a9c9eaa&profile_id=164"
+                type="video/mp4"
+              />
+            </video>
+          </motion.div>
+
+          {/* PHILOSOPHY CARD */}
+          <motion.div
+            {...reveal}
+            className="md:col-span-4 bg-white rounded-[40px] p-12 border border-stone-100 shadow-sm flex flex-col justify-between"
+          >
+            <p className="text-xl leading-relaxed text-stone-500 font-light italic">
+              “Yoga is the technology of the self — precision in breath,
+              discipline in movement, clarity in awareness.”
+            </p>
+
+            <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-stone-400 mt-12">
+              Private Sessions
+            </p>
+          </motion.div>
+
+          {/* DETAIL IMAGE */}
+          <motion.div
+            {...reveal}
+            transition={{ delay: 0.3 }}
+            className="md:col-span-4 rounded-[40px] overflow-hidden"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?q=80&w=1200"
+              alt="Yoga detail"
+              className="w-full h-full object-cover hover:scale-105 transition duration-700"
+            />
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* ================= STATIC GALLERY ================= */}
+      <section className="py-32 bg-[#FAF9F6] border-y border-stone-100">
+        <div className="max-w-6xl mx-auto px-6 text-center mb-20">
+          <motion.h3
+            {...reveal}
+            className="text-4xl md:text-5xl font-serif italic mb-6"
+          >
+            The Sanctuary
+          </motion.h3>
+
+          <motion.p
+            {...reveal}
+            className="text-stone-400 font-light tracking-wide uppercase text-xs"
+          >
+            Every element is curated for sensory clarity.
+          </motion.p>
+        </div>
+
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+          {[
+            "https://images.unsplash.com/photo-1552196563-55cd4e45efb3?q=80&w=1200",
+            "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1200",
+            "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=1200",
+            "https://images.unsplash.com/photo-1545389336-cf090694435e?q=80&w=1200",
+            "https://images.unsplash.com/photo-1510894347713-fc3ed6fdf539?q=80&w=1200",
+            "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1200",
+          ].map((src, i) => (
+            <motion.div
+              key={i}
+              {...reveal}
+              transition={{ delay: i * 0.05 }}
+              className="rounded-[32px] overflow-hidden shadow-lg"
+            >
+              <img
+                src={src}
+                alt="Yoga gallery"
+                className="w-full h-[320px] object-cover hover:scale-105 transition duration-700"
+              />
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ================= CTA ================= */}
+      <section className="py-48 px-6 bg-white relative overflow-hidden">
+
+        <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
+          <div className="w-[700px] h-[700px] bg-stone-100 rounded-full blur-[140px] opacity-60" />
+        </div>
+
+        <div className="max-w-4xl mx-auto text-center relative z-10 space-y-12">
+          <motion.div {...reveal}>
+            <h4 className="text-6xl md:text-8xl font-light leading-none">
+              Initiate{" "}
+              <span className="font-serif italic text-stone-400">
+                Your Flow.
+              </span>
+            </h4>
+
+            <p className="text-stone-500 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed mt-8">
+              Available for private 1:1 sessions and curated small group
+              immersions. Experience yoga as personal transformation.
+            </p>
+          </motion.div>
+
+          <motion.a
+            {...reveal}
+            href="https://wa.me/919999999999"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center justify-center px-14 py-6 bg-black text-white rounded-full 
+                       text-[11px] tracking-[0.5em] uppercase font-bold 
+                       transition-all duration-500 hover:bg-stone-800 shadow-xl"
+          >
+            Request Private Session
+          </motion.a>
+
+          <div className="flex gap-12 pt-16 border-t border-stone-100 justify-center text-[10px] tracking-[0.4em] text-stone-400 uppercase font-bold">
+            <span>Vinyasa</span>
+            <span>•</span>
+            <span>Hatha</span>
+            <span>•</span>
+            <span>Restorative</span>
           </div>
         </div>
       </section>
+
     </main>
   );
 };

@@ -1,102 +1,146 @@
 import React, { useEffect, useState } from "react";
 
 const images = [
-  "/images/studio/studio-1.jpg",
-  "/images/studio/studio-2.jpg",
-  "/images/studio/studio-3.jpg",
-  "/images/studio/studio-4.jpg",
-  "/images/studio/studio-5.jpg",
+  "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1552196563-55cd4e45efb3?auto=format&fit=crop&w=1600&q=80",
 ];
 
 const YogaStudioSpace = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [clients, setClients] = useState(1);
 
-  // Auto image change
   useEffect(() => {
     const imgInterval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % images.length);
-    }, 4500);
-
+    }, 5000);
     return () => clearInterval(imgInterval);
   }, []);
 
-  // Client counter (slow & calm)
   useEffect(() => {
     if (clients >= 50) return;
-
-    const counter = setTimeout(() => {
-      setClients((prev) => prev + 1);
-    }, 80); // slow increase
-
+    const counter = setTimeout(() => setClients(prev => prev + 1), 60);
     return () => clearTimeout(counter);
   }, [clients]);
 
   return (
-    <section className="py-28 px-6 bg-[#FAF9F6] overflow-hidden">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+    <section className="relative py-24 md:py-32 px-6 bg-[#FCFBF9] text-[#1a1a1a] overflow-hidden">
 
-        {/* LEFT CONTENT */}
-        <div className="md:col-span-5">
-          <h2 className="text-4xl md:text-5xl font-serif italic text-stone-900 mb-6">
-            A Real Yoga Studio
-          </h2>
+      {/* Background Decorative Element */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-[#F3F2EE] -z-10 translate-x-1/4" />
 
-          <p className="text-stone-500 text-lg leading-relaxed mb-6">
-            यह सिर्फ़ योग करने की जगह नहीं है।  
-            यह एक शांत स्टूडियो है — जहाँ शरीर और श्वास
-            अपने स्वाभाविक ताल में आते हैं।
-          </p>
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
 
-          <p className="text-stone-500 text-base leading-relaxed mb-12">
-            No rush. No noise.  
-            Just space, breath, and presence.
-          </p>
+          {/* LEFT CONTENT */}
+          <div className="w-full lg:w-5/12 z-10">
 
-          {/* CLIENT COUNTER */}
-          <div className="border-t border-stone-200 pt-8">
-            <p className="text-sm tracking-widest uppercase text-stone-400 mb-2">
-              Clients Served
-            </p>
+            <header className="mb-12">
 
-            <div className="flex items-end gap-2">
-              <span className="text-5xl font-serif text-stone-900">
-                {clients}
+              <span className="block text-[10px] tracking-[0.3em] uppercase text-stone-400 mb-4 font-medium">
+                The Environment
               </span>
-              <span className="text-2xl text-stone-500 mb-1">+</span>
+
+              <h2 className="text-5xl md:text-7xl font-light tracking-tight leading-[1.1] mb-8 italic font-serif">
+                A Sanctuary <br />
+                <span className="not-italic font-sans font-light text-stone-400">
+                  for the Soul
+                </span>
+              </h2>
+
+              <div className="h-[1px] w-12 bg-stone-300 mb-8" />
+
+              <p className="text-stone-600 text-lg md:text-xl font-light leading-relaxed mb-6 italic">
+                यह सिर्फ़ योग करने की जगह नहीं है। यह एक शांत स्टूडियो है — जहाँ शरीर और श्वास अपने स्वाभाविक ताल में आते हैं।
+              </p>
+
+              <p className="text-stone-400 text-sm tracking-wide uppercase font-light">
+                No rush. No noise. Just presence.
+              </p>
+
+            </header>
+
+            {/* CLIENT COUNTER */}
+            <div className="flex items-center gap-8 group cursor-default">
+
+              <div>
+                <div className="flex items-baseline">
+                  <span className="text-6xl font-light tracking-tighter text-stone-900 transition-all duration-700 group-hover:tracking-normal">
+                    {clients}
+                  </span>
+                  <span className="text-xl font-light text-stone-400 ml-1">+</span>
+                </div>
+
+                <p className="text-[11px] tracking-[0.2em] uppercase text-stone-400 mt-2">
+                  Mindful Members
+                </p>
+              </div>
+
+              <div className="h-10 w-[1px] bg-stone-200" />
+
+              <p className="text-xs text-stone-500 max-w-[160px] leading-relaxed italic">
+                Trusted by those seeking a deeper connection to movement.
+              </p>
+
             </div>
 
-            <p className="mt-2 text-stone-500 text-sm">
-              Trusted by people seeking calm, balance, and mindful movement.
-            </p>
           </div>
-        </div>
 
-        {/* RIGHT IMAGE BOX */}
-        <div className="md:col-span-7 relative h-[420px] md:h-[520px] rounded-2xl overflow-hidden">
+          {/* RIGHT IMAGE */}
+          <div className="w-full lg:w-7/12 relative">
 
-          {images.map((img, index) => (
-            <img
-              key={index}
-              src={img}
-              alt={`Yoga studio view ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms] ease-in-out
-                ${index === activeIndex ? "opacity-100" : "opacity-0"}`}
-            />
-          ))}
+            <div className="absolute -inset-4 border border-stone-200 rounded-[2rem] -z-10 translate-x-4 translate-y-4" />
 
-          <div className="absolute inset-0 bg-black/10" />
+            <div className="relative aspect-[4/5] md:aspect-video rounded-2xl overflow-hidden shadow-2xl shadow-stone-200/50">
 
-          <div className="absolute bottom-6 left-6 text-white">
-            <span className="text-xs tracking-widest uppercase opacity-80">
-              Studio Space
-            </span>
-            <p className="text-lg font-light mt-1">
-              Calm • Open • Grounded
-            </p>
+              {images.map((img, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-transform duration-[2000ms] ease-out ${
+                    index === activeIndex
+                      ? "scale-100 opacity-100"
+                      : "scale-110 opacity-0"
+                  }`}
+                >
+                  <img
+                    src={img}
+                    alt={`Studio view ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 via-transparent to-transparent" />
+                </div>
+              ))}
+
+              {/* IMAGE LABEL */}
+              <div className="absolute bottom-8 left-8 flex items-center gap-4">
+
+                <div className="flex gap-1">
+                  {images.map((_, i) => (
+                    <div
+                      key={i}
+                      className={`h-1 transition-all duration-500 rounded-full ${
+                        i === activeIndex
+                          ? "w-8 bg-white"
+                          : "w-2 bg-white/40"
+                      }`}
+                    />
+                  ))}
+                </div>
+
+                <span className="text-[10px] tracking-[0.3em] uppercase text-white font-medium">
+                  Gallery 0{activeIndex + 1}
+                </span>
+
+              </div>
+
+            </div>
+
           </div>
-        </div>
 
+        </div>
       </div>
     </section>
   );

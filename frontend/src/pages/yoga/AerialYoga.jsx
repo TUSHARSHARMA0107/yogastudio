@@ -1,153 +1,259 @@
-import VideoHero from "../../components/program/VideoHero";
-import ImageCarousel from "../../components/program/ImageCarousel";
-import ProgramDetails from "../../components/program/ProgramDetails";
-import BenefitsSection from "../../components/program/BenefitsSection";
-import FAQSection from "../../components/program/FAQSection";
+import React from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Wind, Cloud, Anchor, Sun, ArrowRight } from "lucide-react";
 
 const AerialYoga = () => {
-  const aerialBenefits = [
-    {
-      title: "Spinal Decompression",
-      desc: "Zero-compression inversions gently lengthen the spine, relieving lower back pain and improving posture."
-    },
-    {
-      title: "Deep Core Strength",
-      desc: "Suspension challenges stability, activating deep abdominal and postural muscles effortlessly."
-    },
-    {
-      title: "Enhanced Flexibility",
-      desc: "Silks support safe entry into deeper stretches while reducing joint pressure."
-    },
-    {
-      title: "Stress & Nervous System Reset",
-      desc: "Floating postures calm the mind and activate the parasympathetic nervous system."
-    },
-  ];
 
-  const aerialFAQ = [
+  const { scrollYProgress } = useScroll();
+  const yRange = useTransform(scrollYProgress,[0.3,0.6],[0,-80]);
+
+  const benefits = [
     {
-      q: "Is Aerial Yoga safe for beginners?",
-      a: "Absolutely. Our beginner classes focus on grounding, confidence, and foundational movements using full support."
+      title:"Spinal Decompression",
+      desc:"Zero-compression inversions gently lengthen the spine.",
+      icon:<Wind size={20}/>
     },
     {
-      q: "What should I wear?",
-      a: "Comfortable, body-hugging clothing that covers knees and underarms for skin protection."
+      title:"Deep Core Strength",
+      desc:"Suspension activates stabilizing muscles.",
+      icon:<Anchor size={20}/>
     },
     {
-      q: "Do I need prior yoga experience?",
-      a: "No experience required. Strength, flexibility, and confidence are built gradually."
+      title:"Enhanced Flexibility",
+      desc:"Silks allow deeper stretches safely.",
+      icon:<Cloud size={20}/>
     },
     {
-      q: "Is there a weight limit?",
-      a: "Our professional rigs are safety-tested and rated for up to 1,000 lbs."
+      title:"Nervous System Reset",
+      desc:"Floating postures calm the mind.",
+      icon:<Sun size={20}/>
     }
-  ];
+  ]
 
   return (
-    <main className="bg-stone-50 overflow-hidden">
-      {/* HERO */}
-      <VideoHero
-        title="Aerial Yoga"
-        subtitle="Defy gravity. Decompress your spine. Rediscover effortless movement."
-        videoSrc="/videos/aerial-hero.mp4"
-        whatsappMessage="Hi! I’d like to book an Aerial Yoga session."
-      />
+    <main className="bg-[#FDFCFB] text-stone-900 overflow-x-hidden">
 
-      {/* INTRO */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-4xl mx-auto text-center animate-fade-up">
-          <h2 className="text-3xl md:text-4xl font-serif mb-6">
-            What Is Aerial Yoga?
-          </h2>
-          <p className="text-stone-600 leading-relaxed text-lg">
-            Aerial Yoga blends traditional yoga postures with a suspended silk hammock,
-            allowing the body to move freely, decompress the spine, and build strength
-            with minimal joint strain. It is both playful and deeply therapeutic.
-          </p>
-        </div>
-      </section>
+{/* ================= HERO ================= */}
 
-      {/* BENEFITS */}
-      <BenefitsSection
-        heading="Benefits of Aerial Yoga"
-        benefits={aerialBenefits}
-      />
+<section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
 
-      {/* PROGRAM DETAILS */}
-      <ProgramDetails
-        title="Our Aerial Yoga Programs"
-        description="Each class is thoughtfully structured to ensure safety, progression, and mindful exploration of movement."
-        levels={[
-          "Intro to Aerial Yoga – Foundations & Safety",
-          "Aerial Flow – Strength & Fluidity",
-          "Aerial Conditioning – Core & Upper Body",
-        ]}
-      />
+<video
+autoPlay
+loop
+muted
+playsInline
+className="absolute inset-0 w-full h-full object-cover"
+>
+<source src="https://cdn.coverr.co/videos/coverr-aerial-yoga-practice-1603/1080p.mp4" type="video/mp4"/>
+</video>
 
-      {/* IMAGE GALLERY */}
-      <section className="py-24 bg-white">
-        <h2 className="text-center text-3xl md:text-4xl font-serif mb-14 animate-fade-up">
-          Inside Our Aerial Studio
-        </h2>
+<div className="absolute inset-0 bg-black/40"/>
 
-        <ImageCarousel
-          images={[
-            "/images/aerial-1.jpg",
-            "/images/aerial-2.jpg",
-            "/images/aerial-3.jpg",
-            "/images/aerial-4.jpg",
-            "/images/aerial-5.jpg",
-            "/images/aerial-6.jpg",
-          ]}
-        />
-      </section>
+<div className="relative z-10 text-center px-6 text-white">
 
-      {/* EXPERIENCE */}
-      <section className="py-24 px-6 bg-stone-100">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-14 items-center">
-          <div className="animate-fade-right">
-            <h3 className="text-3xl font-serif mb-6">
-              A Calm, Safe & Supportive Space
-            </h3>
-            <p className="text-stone-600 leading-relaxed">
-              Our studio uses premium aerial silks, expert rigging, and small group sizes
-              to ensure personal attention, safety, and a deeply restorative experience.
-            </p>
-          </div>
+<span className="text-[10px] tracking-[0.4em] uppercase text-white/70">
+Aerial Yoga
+</span>
 
-          <div className="animate-fade-left">
-            <img
-              src="/images/aerial-space.jpg"
-              alt="Aerial yoga studio"
-              className="rounded-3xl shadow-lg w-full h-[420px] object-cover"
-            />
-          </div>
-        </div>
-      </section>
+<h1 className="mt-6 text-5xl md:text-7xl lg:text-8xl font-serif font-light leading-[1.05]">
+Elevate <br/>
+<span className="italic text-stone-200">Your Practice</span>
+</h1>
 
-      {/* FAQ */}
-      <FAQSection faqs={aerialFAQ} />
+<p className="mt-6 text-white/80 max-w-xl mx-auto text-lg">
+Defy gravity. Decompress the spine. Discover movement in a new dimension.
+</p>
 
-      {/* FINAL CTA */}
-      <section className="py-28 px-6 text-center bg-gradient-to-b from-white to-stone-100">
-        <h3 className="text-4xl md:text-5xl font-light mb-8 animate-fade-up">
-          Ready to Fly?
-        </h3>
+<a
+href="https://wa.me/919800000000?text=Hi%20I%20want%20to%20book%20an%20Aerial%20Yoga%20session"
+className="inline-flex items-center gap-3 mt-10 px-10 py-4 bg-white text-black rounded-full text-sm tracking-widest uppercase"
+>
+Book on WhatsApp
+<ArrowRight size={16}/>
+</a>
 
-        <p className="text-stone-600 max-w-xl mx-auto mb-12 animate-fade-up delay-200">
-          Experience a joyful, strength-building, and deeply healing practice
-          designed for all bodies.
-        </p>
+</div>
 
-        <a
-          href="https://wa.me/91XXXXXXXXXX?text=Hi! I’d like to book an Aerial Yoga session."
-          target="_blank"
-          className="inline-block px-12 py-4 rounded-full bg-emerald-600 text-white hover:bg-emerald-700 transition-all duration-300 animate-fade-up delay-300"
-        >
-          Book Aerial Yoga on WhatsApp
-        </a>
-      </section>
-    </main>
+</section>
+
+
+{/* ================= PHILOSOPHY ================= */}
+
+<section className="py-32">
+
+<div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+
+<motion.div>
+
+<span className="text-[10px] tracking-[0.4em] uppercase text-stone-400">
+The Philosophy
+</span>
+
+<h2 className="mt-6 text-4xl md:text-6xl font-serif font-light">
+A dance between <br/>
+<span className="italic text-stone-400">Gravity & Grace</span>
+</h2>
+
+<p className="mt-8 text-stone-500 text-lg max-w-xl">
+Aerial Yoga blends traditional yoga with suspended silk hammocks,
+creating a unique environment where the body can stretch,
+decompress and move freely.
+</p>
+
+</motion.div>
+
+<motion.div style={{y:yRange}}>
+
+<div className="rounded-[2rem] overflow-hidden shadow-xl aspect-[4/5]">
+
+<img
+src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?q=80&w=1400"
+className="w-full h-full object-cover"
+/>
+
+</div>
+
+</motion.div>
+
+</div>
+
+</section>
+
+
+{/* ================= BENEFITS ================= */}
+
+<section className="py-32 bg-white">
+
+<div className="max-w-7xl mx-auto px-6">
+
+<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+{benefits.map((item,i)=>(
+<div
+key={i}
+className="p-10 border border-stone-100 rounded-[2rem] hover:shadow-xl transition"
+>
+
+<div className="w-12 h-12 bg-stone-100 rounded-xl flex items-center justify-center mb-6">
+{item.icon}
+</div>
+
+<h3 className="text-lg font-medium mb-3">
+{item.title}
+</h3>
+
+<p className="text-stone-500 text-sm">
+{item.desc}
+</p>
+
+</div>
+))}
+
+</div>
+
+</div>
+
+</section>
+
+
+{/* ================= PROGRAM SECTION ================= */}
+
+<section className="relative py-40 overflow-hidden">
+
+<div className="absolute inset-0">
+
+<img
+src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1600"
+className="w-full h-full object-cover"
+/>
+
+</div>
+
+<div className="absolute inset-0 bg-black/60"/>
+
+<div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center text-white">
+
+<div>
+
+<h2 className="text-4xl md:text-6xl font-serif mb-8">
+Studio Programs
+</h2>
+
+<ul className="space-y-4 text-white/80 text-lg">
+
+<li>• Aerial Foundations (Beginner)</li>
+<li>• Aerial Flow & Strength</li>
+<li>• Restorative Floating Meditation</li>
+
+</ul>
+
+</div>
+
+<div className="rounded-[2rem] overflow-hidden shadow-2xl">
+
+<img
+src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1400"
+className="w-full h-full object-cover"
+/>
+
+</div>
+
+</div>
+
+</section>
+
+
+{/* ================= GALLERY ================= */}
+
+<section className="py-32 bg-white">
+
+<div className="max-w-6xl mx-auto px-6 text-center mb-16">
+
+<h2 className="text-4xl md:text-5xl font-serif font-light">
+Studio Gallery
+</h2>
+
+</div>
+
+<div className="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto px-6">
+
+{[
+"https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1200",
+"https://images.unsplash.com/photo-1545389336-cf090694435e?q=80&w=1200",
+"https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?q=80&w=1200",
+"https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1200",
+"https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=1200",
+"https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200"
+].map((img,i)=>(
+<div key={i} className="aspect-[4/5] rounded-[2rem] overflow-hidden">
+<img src={img} className="w-full h-full object-cover"/>
+</div>
+))}
+
+</div>
+
+</section>
+
+
+{/* ================= CTA ================= */}
+
+<section className="py-40 text-center">
+
+<h2 className="text-5xl md:text-7xl font-serif font-light">
+Ready to <span className="italic text-stone-400">Fly?</span>
+</h2>
+
+<a
+href="https://wa.me/919800000000?text=Hi%20I%20want%20to%20book%20an%20Aerial%20Yoga%20session"
+className="inline-flex items-center gap-3 mt-10 px-12 py-5 bg-stone-900 text-white rounded-full text-sm tracking-widest uppercase"
+>
+Book Your Hammock
+<ArrowRight size={16}/>
+</a>
+
+</section>
+
+</main>
   );
 };
 

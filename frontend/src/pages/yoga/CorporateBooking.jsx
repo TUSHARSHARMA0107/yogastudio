@@ -1,172 +1,302 @@
-// pages/CorporateBooking.jsx
-
-
-
+import React from "react";
+import { motion } from "framer-motion";
+import {
+  CheckCircle2,
+  ArrowUpRight,
+  ArrowDownRight,
+  Briefcase,
+  Users,
+  Globe,
+} from "lucide-react";
 import VideoHero from "../../components/program/VideoHero";
-import ImageCarousel from "../../components/program/ImageCarousel";
 import ProgramDetails from "../../components/program/ProgramDetails";
-import BenefitsSection from "../../components/program/BenefitsSection";
 import FAQSection from "../../components/program/FAQSection";
 
 const CorporateBooking = () => {
-  const corporateBenefits = [
-    {
-      title: "Reduced Workplace Stress",
-      desc: "Regular wellness sessions help employees manage stress and mental fatigue effectively.",
-    },
-    {
-      title: "Improved Focus & Productivity",
-      desc: "Breathwork and mindful movement enhance clarity, concentration, and performance.",
-    },
-    {
-      title: "Higher Employee Engagement",
-      desc: "Wellbeing initiatives increase participation, morale, and team connection.",
-    },
-    {
-      title: "Healthier Work Culture",
-      desc: "Consistent wellness practices support long-term physical and mental wellbeing.",
-    },
-  ];
 
-  const corporateFAQ = [
-    {
-      q: "Can sessions be conducted online or onsite?",
-      a: "Yes. We offer onsite, virtual, and hybrid corporate wellness programs.",
-    },
-    {
-      q: "Are programs suitable for all age groups?",
-      a: "Absolutely. Sessions are inclusive and adaptable for diverse teams.",
-    },
-    {
-      q: "How long are corporate sessions?",
-      a: "Typical sessions range from 30 to 60 minutes, based on your schedule.",
-    },
-  ];
+const benefits = [
+{
+title:"Reduced Workplace Stress",
+desc:"Structured breathwork and mobility sessions reduce mental fatigue."
+},
+{
+title:"Sharper Cognitive Output",
+desc:"Mind-body integration improves focus and executive clarity."
+},
+{
+title:"Higher Team Alignment",
+desc:"Shared wellness rituals enhance team cohesion."
+},
+{
+title:"Sustainable Performance",
+desc:"Frameworks supporting long-term nervous system balance."
+}
+]
 
-  return (
-    <main className="bg-neutral-100 text-neutral-800 overflow-hidden">
-      {/* HERO — CORPORATE STYLE */}
-      <VideoHero
-        title="Corporate Wellness Programs"
-        subtitle="Structured wellness initiatives designed for modern workplaces."
-        videoSrc="/videos/corporate-yoga.mp4"
-        whatsappMessage="Hello, I want to book a Corporate Wellness program."
-      />
+const reveal = {
+initial:{opacity:0,y:30},
+whileInView:{opacity:1,y:0},
+viewport:{once:true},
+transition:{duration:0.7}
+}
 
-      {/* KPI BAND — VERY VISIBLE DIFFERENCE */}
-      <section className="bg-white border-b border-neutral-300">
-        <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div>
-            <p className="text-3xl font-semibold text-emerald-600">↓ 30%</p>
-            <p className="text-sm text-neutral-600 mt-2">Stress Reduction</p>
-          </div>
-          <div>
-            <p className="text-3xl font-semibold text-emerald-600">↑ 20%</p>
-            <p className="text-sm text-neutral-600 mt-2">Productivity</p>
-          </div>
-          <div>
-            <p className="text-3xl font-semibold text-emerald-600">↑ 25%</p>
-            <p className="text-sm text-neutral-600 mt-2">Engagement</p>
-          </div>
-          <div>
-            <p className="text-3xl font-semibold text-emerald-600">↓ 22%</p>
-            <p className="text-sm text-neutral-600 mt-2">Burnout Risk</p>
-          </div>
-        </div>
-      </section>
+return (
 
-      {/* OVERVIEW — SPLIT LAYOUT (NOT USED ELSEWHERE) */}
-      <section className="bg-neutral-50 py-24 px-6 border-b border-neutral-200">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 className="text-3xl font-medium mb-6">
-              Wellness Built for the Workplace
-            </h2>
-            <p className="text-neutral-600 leading-relaxed">
-              Our corporate wellness programs are designed to fit seamlessly
-              into office schedules and remote work environments. Sessions focus
-              on stress management, posture, focus, and mental clarity—without
-              disrupting productivity.
-            </p>
-          </div>
+<main className="bg-[#FDFCFB] text-stone-900 overflow-x-hidden">
 
-          <div className="bg-white border border-neutral-300 p-10">
-            <ul className="space-y-4 text-sm text-neutral-700">
-              <li>✔ Suitable for all fitness levels</li>
-              <li>✔ Minimal space & equipment required</li>
-              <li>✔ Online, onsite, or hybrid delivery</li>
-              <li>✔ Custom scheduling & session formats</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+{/* ================= HERO ================= */}
 
-      {/* BENEFITS — STRUCTURED GRID */}
-      <section className="bg-white border-b border-neutral-200">
-        <BenefitsSection
-          heading="Key Benefits for Organizations"
-          benefits={corporateBenefits}
-        />
-      </section>
+<VideoHero
+title="Corporate Wellness Systems"
+subtitle="Executive-grade wellness designed for modern organizations."
+videoSrc="https://cdn.coverr.co/videos/coverr-team-yoga-session-5177/1080p.mp4"
+whatsappMessage="Hello I want to discuss Corporate Wellness"
+/>
 
-      {/* PROGRAM DETAILS — CORPORATE FORMATS */}
-      <section className="bg-neutral-50 border-b border-neutral-200">
-        <ProgramDetails
-          title="Corporate Program Formats"
-          description="Choose from flexible wellness formats designed to support teams across roles and locations."
-          levels={[
-            "Weekly Office or Virtual Sessions",
-            "Leadership & Focus Workshops",
-            "Wellness Days & Corporate Retreats",
-          ]}
-        />
-      </section>
 
-      {/* GALLERY — DOCUMENTARY STYLE */}
-      <section className="bg-white py-20 border-b border-neutral-200">
-        <h3 className="text-center text-2xl md:text-3xl font-medium mb-12">
-          Corporate Wellness in Practice
-        </h3>
+{/* ================= KPI STRIP ================= */}
 
-        <div className="max-w-6xl mx-auto px-6">
-          <ImageCarousel
-            images={[
-              "/images/corporate1.jpg",
-              "/images/corporate2.jpg",
-              "/images/corporate3.jpg",
-              "/images/corporate4.jpg",
-            ]}
-          />
-        </div>
-      </section>
+<section className="relative -mt-20 z-20 px-6">
 
-      {/* FAQ — CLEAN & COMPACT */}
-      <section className="bg-neutral-50">
-        <FAQSection faqs={corporateFAQ} />
-      </section>
+<div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
 
-      {/* CTA — HR DECISION MAKER */}
-      <section className="bg-white py-24 px-6 border-t border-neutral-300 text-center">
-        <h3 className="text-3xl md:text-4xl font-medium mb-6">
-          Invest in Your Team’s Wellbeing
-        </h3>
+{[
+{label:"Stress Reduction",val:"30%",icon:<ArrowDownRight/>},
+{label:"Productivity Boost",val:"20%",icon:<ArrowUpRight/>},
+{label:"Engagement Rise",val:"25%",icon:<ArrowUpRight/>},
+{label:"Burnout Risk ↓",val:"22%",icon:<ArrowDownRight/>},
+].map((item,i)=>(
 
-        <p className="text-neutral-600 max-w-xl mx-auto mb-10">
-          Let’s design a corporate wellness program aligned with your
-          organizational goals and team needs.
-        </p>
+<motion.div
+key={i}
+{...reveal}
+transition={{delay:i*0.1}}
+className="bg-white border border-stone-100 p-8 rounded-[2rem] shadow-lg text-center"
+>
 
-        <a
-          href="https://wa.me/91XXXXXXXXXX?text=Hello! I’d like to discuss a Corporate Wellness program."
-          target="_blank"
-          className="inline-block px-10 py-3 rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition"
-        >
-          Enquire on WhatsApp
-        </a>
-      </section>
-    </main>
-  );
-};
+<div className="flex justify-center items-center gap-2 mb-2 text-emerald-600">
+<span className="text-3xl font-semibold">{item.val}</span>
+{item.icon}
+</div>
 
-export default CorporateBooking;
+<p className="text-xs uppercase tracking-[0.25em] text-stone-400">
+{item.label}
+</p>
 
+</motion.div>
+
+))}
+
+</div>
+
+</section>
+
+
+{/* ================= STRATEGY ================= */}
+
+<section className="py-32 px-6">
+
+<div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+
+<motion.div {...reveal}>
+
+<span className="text-[10px] uppercase tracking-[0.4em] text-emerald-600 font-bold">
+Enterprise Strategy
+</span>
+
+<h2 className="text-5xl font-serif font-light mt-6 mb-8 leading-tight">
+Wellness for a <span className="italic text-stone-400">Performance Culture</span>
+</h2>
+
+<p className="text-lg text-stone-500 leading-relaxed mb-10">
+Our systems integrate seamlessly into corporate ecosystems —
+combining breath science, neuroscience and movement
+to optimize cognitive and physiological performance.
+</p>
+
+<div className="flex gap-8 text-sm text-stone-500">
+
+<div className="flex items-center gap-2">
+<Briefcase size={18} className="text-emerald-600"/>
+Onsite
+</div>
+
+<div className="flex items-center gap-2">
+<Globe size={18} className="text-emerald-600"/>
+Virtual
+</div>
+
+<div className="flex items-center gap-2">
+<Users size={18} className="text-emerald-600"/>
+Hybrid
+</div>
+
+</div>
+
+</motion.div>
+
+
+<motion.div
+{...reveal}
+className="relative rounded-[3rem] overflow-hidden shadow-xl"
+>
+
+<img
+src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1400"
+className="w-full h-[500px] object-cover"
+/>
+
+</motion.div>
+
+</div>
+
+</section>
+
+
+{/* ================= BENEFITS GRID ================= */}
+
+<section className="py-32 bg-white">
+
+<div className="max-w-6xl mx-auto px-6">
+
+<h3 className="text-4xl font-serif font-light text-center mb-20">
+Organizational Impact
+</h3>
+
+<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+{benefits.map((item,i)=>(
+<motion.div
+key={i}
+{...reveal}
+transition={{delay:i*0.1}}
+className="p-10 rounded-[2rem] bg-[#FDFCFB] border border-stone-100 hover:shadow-xl hover:-translate-y-1 transition"
+>
+
+<h4 className="text-xl font-medium mb-4">
+{item.title}
+</h4>
+
+<p className="text-stone-500 text-sm leading-relaxed">
+{item.desc}
+</p>
+
+</motion.div>
+))}
+
+</div>
+
+</div>
+
+</section>
+
+
+{/* ================= IMAGE GRID ================= */}
+
+<section className="py-32 px-6 bg-[#F7F6F3]">
+
+<div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+
+{[
+"https://images.unsplash.com/photo-1545389336-cf090694435e?q=80&w=1200",
+"https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?q=80&w=1200",
+"https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1200",
+"https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1200"
+].map((src,i)=>(
+<motion.div
+key={i}
+{...reveal}
+className="rounded-[2rem] overflow-hidden shadow-xl"
+>
+
+<img
+src={src}
+className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700"
+/>
+
+</motion.div>
+))}
+
+</div>
+
+</section>
+
+
+{/* ================= PROGRAM DETAILS ================= */}
+
+<section className="py-32 px-6 bg-white">
+
+<motion.div {...reveal} className="max-w-5xl mx-auto">
+
+<ProgramDetails
+title="Corporate Formats"
+description="Flexible wellness systems adaptable to enterprise structures."
+levels={[
+"Weekly Corporate Sessions",
+"Leadership Retreats",
+"Corporate Wellness Days"
+]}
+/>
+
+</motion.div>
+
+</section>
+
+
+{/* ================= CTA ================= */}
+
+<section className="py-40 px-6 text-center bg-[#FDFCFB]">
+
+<motion.div {...reveal} className="max-w-3xl mx-auto">
+
+<h3 className="text-5xl font-serif font-light mb-10">
+Elevate Your <span className="italic text-stone-400">Human Capital</span>
+</h3>
+
+<a
+href="https://wa.me/919800000000?text=Hello%20I%20want%20to%20discuss%20corporate%20wellness"
+target="_blank"
+className="inline-flex items-center gap-4 px-14 py-6 bg-stone-900 text-white rounded-full text-xs tracking-widest uppercase hover:bg-emerald-600 transition"
+>
+
+Initiate Partnership
+<ArrowUpRight/>
+
+</a>
+
+</motion.div>
+
+</section>
+
+
+{/* ================= FAQ ================= */}
+
+<section className="py-24 bg-white border-t">
+
+<div className="max-w-4xl mx-auto px-6">
+
+<FAQSection
+faqs={[
+{
+q:"Can this integrate into HR strategy?",
+a:"Yes, programs align with corporate wellbeing KPIs."
+},
+{
+q:"Delivery flexibility?",
+a:"Onsite, virtual or hybrid sessions are available."
+}
+]}
+/>
+
+</div>
+
+</section>
+
+
+</main>
+
+)
+
+}
+
+export default CorporateBooking

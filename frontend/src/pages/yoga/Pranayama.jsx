@@ -1,120 +1,249 @@
-// pages/Pranayama.jsx
-
-
+import React from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
 import VideoHero from "../../components/program/VideoHero";
 import ImageCarousel from "../../components/program/ImageCarousel";
 import ProgramDetails from "../../components/program/ProgramDetails";
 import BenefitsSection from "../../components/program/BenefitsSection";
 import FAQSection from "../../components/program/FAQSection";
-import React from "react";
 import DynamicBreath from "../../components/program/DynamicBreath";
 
 const Pranayama = () => {
-  const benefits = [
-    { title: "Neuro-Regulation", desc: "Instantly modulate your autonomic nervous system to exit 'fight or flight' mode." },
-    { title: "Oxygen Efficiency", desc: "Optimize cellular respiration and increase the functional capacity of the lungs." },
-    { title: "Cognitive Anchor", desc: "Breath serves as a singular point of focus to dissolve mental fragmentation." },
-    { title: "Vitality Flow", desc: "Regulate the body's internal bio-electricity (Prana) for sustained energy." },
-  ];
 
-  const faqs = [
-    { q: "Is this suitable for beginners?", a: "Precisely. We begin with foundational 'Natural Breath Awareness' before introducing regulation." },
-    { q: "Can I practice this online?", a: "Yes. Our instructors provide visual cues that are highly effective via high-definition streaming." },
-    { q: "What is the science behind it?", a: "By altering CO2 levels and stimulating the Vagus nerve, we change the brain's chemistry in real-time." },
-  ];
+const { scrollYProgress } = useScroll();
+const scaleX = useSpring(scrollYProgress,{stiffness:100,damping:30})
 
-  return (
-    <main className="bg-[#FCFBFA] text-[#1A1A1A] selection:bg-stone-200">
-      
-      {/* 01. HERO — CINEMATIC DEPTH */}
-      <VideoHero
-        title="Pranayama"
-        subtitle="The science of conscious breath regulation. A vital bridge between the physical and mental states."
-        videoSrc="/videos/pranayama.mp4"
-        whatsappMessage="Hello, I would like to explore Pranayama sessions."
-      />
+const benefits = [
+{
+title:"Nervous System Regulation",
+desc:"Breath patterns directly influence the parasympathetic nervous system helping reduce stress instantly."
+},
+{
+title:"Improved Lung Capacity",
+desc:"Controlled breathing improves oxygen intake and strengthens respiratory muscles."
+},
+{
+title:"Mental Clarity",
+desc:"Focused breathing stabilizes attention and reduces cognitive overload."
+},
+{
+title:"Energy Balance",
+desc:"Pranayama harmonizes internal energy flow improving vitality and focus."
+}
+]
 
-      {/* 02. EDUCATIONAL PANEL — EDITORIAL WHITE SPACE */}
-      <section className="py-32 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-20 items-end">
-          <div className="md:w-1/2">
-            <span className="text-[10px] tracking-[0.5em] uppercase text-stone-400 font-bold mb-8 block">The Protocol</span>
-            <h2 className="text-5xl md:text-6xl font-light tracking-tighter leading-none mb-10">
-              Biology. <br /> Meet <span className="italic font-serif">Intent.</span>
-            </h2>
-          </div>
-          <div className="md:w-1/2">
-            <p className="text-xl text-stone-500 font-light leading-relaxed mb-8">
-              Pranayama is more than 'breathing.' It is the systematic control of life-force. 
-              By manipulating the duration and retention of the breath, we unlock the ability 
-              to self-regulate our emotional and physiological architecture.
-            </p>
-          </div>
-        </div>
-      </section>
+const faqs = [
+{
+q:"Is Pranayama suitable for beginners?",
+a:"Yes. We start with natural breath awareness before introducing advanced techniques."
+},
+{
+q:"Can this be practiced online?",
+a:"Yes. Our guided sessions are effective both in studio and via online classes."
+},
+{
+q:"How often should I practice?",
+a:"Even 10–15 minutes daily can significantly improve focus and calmness."
+}
+]
 
-      {/* 03. DYNAMIC PRACTICE — THE KINETIC HUB */}
-      <section className="py-24 bg-white rounded-[60px] shadow-[0_40px_100px_rgba(0,0,0,0.03)] border-y border-stone-100">
-        <div className="text-center mb-10">
-          <h3 className="text-sm tracking-[0.3em] uppercase font-bold text-stone-300">Synchronized Visualizer</h3>
-        </div>
-        <DynamicBreath />
-      </section>
+const reveal = {
+initial:{opacity:0,y:30},
+whileInView:{opacity:1,y:0},
+viewport:{once:true},
+transition:{duration:0.8}
+}
 
-      {/* 04. BENEFITS — MODERN CARDS */}
-      <div className="bg-[#FAF9F6]">
-        <BenefitsSection
-          heading="Technological Benefits"
-          benefits={benefits}
-        />
-      </div>
+return(
 
-      {/* 05. PROGRAM DETAILS — STRUCTURED ARCHITECTURE */}
-      <section className="py-24">
-        <ProgramDetails
-          title="The Curricula"
-          description="A tiered approach to respiratory mastery, from foundation to advanced retention."
-          levels={[
-            "Level 1: Conscious Diaphragmatic Awareness",
-            "Level 2: Rhythmic Balancing (Sama Vritti)",
-            "Level 3: Advanced Cleansing (Kriyas)",
-          ]}
-        />
-      </section>
+<main className="bg-[#FDFCFB] text-stone-900 overflow-x-hidden">
 
-      {/* 06. GALLERY — THE AMBIANCE */}
-      <section className="py-32 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="rounded-[48px] overflow-hidden shadow-2xl">
-            <ImageCarousel
-              images={["/p1.jpg", "/p2.jpg", "/p3.jpg", "/p4.jpg"]}
-            />
-          </div>
-        </div>
-      </section>
+{/* PROGRESS INDICATOR */}
 
-      {/* 07. FAQ & CONCIERGE */}
-      <section className="bg-[#FAF9F6] rounded-t-[60px] py-20">
-        <FAQSection faqs={faqs} />
-      </section>
+<motion.div
+className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-stone-300 to-stone-500 z-50 origin-left"
+style={{scaleX}}
+/>
 
-      {/* 08. FINAL CTA — LUXURY CONVERSION */}
-      <section className="py-48 text-center bg-white">
-        <div className="max-w-3xl mx-auto space-y-12">
-          <h4 className="text-5xl md:text-7xl font-light tracking-tighter">Your first breath starts here.</h4>
-          <p className="text-stone-400 text-lg font-light italic">Limited availability for 1:1 neuro-breath coaching.</p>
-          
-          <a
-            href="https://wa.me/91XXXXXXXXXX"
-            className="group relative inline-flex items-center justify-center px-16 py-6 bg-stone-900 text-white rounded-full overflow-hidden transition-all duration-500"
-          >
-            <span className="absolute inset-0 bg-blue-500 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-            <span className="relative z-10 tracking-[0.4em] text-[11px] font-bold">Initiate Session</span>
-          </a>
-        </div>
-      </section>
-    </main>
-  );
-};
+
+{/* HERO */}
+
+<VideoHero
+title="Pranayama"
+subtitle="The ancient science of conscious breathing connecting body, mind and awareness."
+videoSrc="https://cdn.coverr.co/videos/coverr-breathing-exercise-5192/1080p.mp4"
+whatsappMessage="Hello I want to explore Pranayama sessions"
+/>
+
+
+{/* INTRO */}
+
+<section className="py-32 px-6">
+
+<div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+
+<motion.div {...reveal}>
+
+<span className="text-[10px] uppercase tracking-[0.4em] text-stone-400 block mb-8">
+The Science
+</span>
+
+<h2 className="text-5xl md:text-7xl font-serif font-light leading-tight mb-8">
+Where Breath <br/>
+<span className="italic text-stone-400">Meets Awareness</span>
+</h2>
+
+<p className="text-lg text-stone-500 leading-relaxed max-w-xl">
+Pranayama is the practice of consciously regulating the breath.
+Through rhythm and awareness it helps balance the nervous system,
+increase oxygen efficiency and cultivate mental clarity.
+</p>
+
+</motion.div>
+
+
+<motion.div {...reveal} className="rounded-[2.5rem] overflow-hidden shadow-xl">
+
+<img
+src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1400"
+className="w-full h-[500px] object-cover"
+/>
+
+</motion.div>
+
+</div>
+
+</section>
+
+
+{/* BREATH VISUALIZER */}
+
+<section className="py-24 px-6">
+
+<motion.div
+initial={{opacity:0,scale:0.95}}
+whileInView={{opacity:1,scale:1}}
+transition={{duration:1}}
+className="max-w-5xl mx-auto bg-white rounded-[3rem] p-16 border border-stone-100 shadow-sm text-center"
+>
+
+<h3 className="text-[10px] uppercase tracking-[0.4em] text-stone-400 mb-12">
+Breath Rhythm
+</h3>
+
+<DynamicBreath/>
+
+<p className="text-xs text-stone-400 uppercase tracking-widest mt-10">
+Inhale • Hold • Exhale
+</p>
+
+</motion.div>
+
+</section>
+
+
+{/* BENEFITS */}
+
+<section className="bg-white py-32">
+
+<BenefitsSection
+heading="Benefits of Pranayama"
+benefits={benefits}
+/>
+
+</section>
+
+
+{/* PROGRAM STRUCTURE */}
+
+<section className="py-32 px-6">
+
+<motion.div {...reveal} className="max-w-5xl mx-auto">
+
+<div className="bg-stone-900 text-white rounded-[3rem] p-16">
+
+<ProgramDetails
+title="Practice Structure"
+description="Each session gradually builds breath awareness and control."
+levels={[
+"Foundational Breath Awareness",
+"Rhythmic Breathing Patterns",
+"Advanced Cleansing Techniques"
+]}
+/>
+
+</div>
+
+</motion.div>
+
+</section>
+
+
+{/* GALLERY */}
+
+<section className="py-32 bg-white">
+
+<div className="max-w-6xl mx-auto px-6">
+
+<h2 className="text-3xl font-serif italic mb-16 text-center">
+Studio Practice
+</h2>
+
+<div className="rounded-[3rem] overflow-hidden shadow-xl bg-white p-2">
+
+<ImageCarousel
+images={[
+"https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?q=80&w=1400",
+"https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=1400",
+"https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1400",
+"https://images.unsplash.com/photo-1599447421387-2bde1c0d6d8d?q=80&w=1400"
+]}
+/>
+
+</div>
+
+</div>
+
+</section>
+
+
+{/* FAQ */}
+
+<section className="py-32 bg-[#FAFAFA]">
+
+<div className="max-w-4xl mx-auto px-6">
+
+<FAQSection faqs={faqs}/>
+
+</div>
+
+</section>
+
+
+{/* CTA */}
+
+<section className="py-40 text-center">
+
+<motion.div {...reveal} className="max-w-3xl mx-auto px-6">
+
+<h3 className="text-5xl md:text-7xl font-serif font-light mb-10">
+Begin Your <span className="italic text-stone-400">Breath Journey</span>
+</h3>
+
+<a
+href="https://wa.me/919800000000?text=Hello%20I%20want%20to%20book%20a%20Pranayama%20session"
+className="inline-flex items-center px-14 py-6 bg-stone-900 text-white rounded-full text-xs uppercase tracking-[0.4em] hover:bg-stone-700 transition"
+>
+Book Session
+</a>
+
+</motion.div>
+
+</section>
+
+</main>
+
+)
+
+}
 
 export default Pranayama;
