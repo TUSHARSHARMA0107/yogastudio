@@ -1,4 +1,4 @@
-import BlogPage from "../components/WellnessContent/FitnessBLog";
+import BlogPage from "../components/WellnessContent/FitnessBlog";
 import InstagramSection from "../components/WellnessContent/InstagramPost";
 import { motion } from "framer-motion";
 
