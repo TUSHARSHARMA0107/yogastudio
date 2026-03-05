@@ -1,7 +1,7 @@
 import React from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import TrainerBio from "../components/trainer/TrainerBio"
-import VideoSection from "../components/trainer/trainerVideo";
+import TrainerVideo from "../components/trainer/TrainerVideo";
 import TrainerJourney from "../components/trainer/TrainrHistory";
 import TrainerRoutine from "../components/trainer/TrainerRoutine";
 
