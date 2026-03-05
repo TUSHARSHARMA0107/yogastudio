@@ -57,7 +57,7 @@ export default function AboutTrainer() {
             border border-stone-100 
             shadow-[0_20px_80px_rgba(0,0,0,0.05)]
           ">
-            <VideoSection />
+            <TrainerVideo />
           </div>
         </motion.section>
 
