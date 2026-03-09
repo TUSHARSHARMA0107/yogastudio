@@ -14,13 +14,7 @@ export default function Home() {
 
 
     {/* //cloundflare checking */}
-    <div
-  class="cf-turnstile"
-  data-sitekey="<YOUR-SITE-KEY>"
-  data-theme="light"
-  data-size="normal"
-  data-callback="onSuccess"
-></div>
+    
       <PopupBox/>
       <main className="relative bg-[#FDFCFB] text-stone-900 overflow-x-hidden">
 
