@@ -19,11 +19,16 @@ import Yoga from "./pages/yoga/Yoga";
 import CommercialBooking from "./pages/yoga/CommercialBooking";
 import Pranayama from "./pages/yoga/Pranayama";
 import Contact from "./pages/ContactUs";
+import ScrollToTop from "./components/ScrollToTop";
+import ThemeProvider from "./context/ThemeProvider";
 
 export default function App() {
   return (
     <>
+<ThemeProvider>
       <Navbar />
+
+      <ScrollToTop/>
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -52,6 +57,7 @@ export default function App() {
       </Routes>
 
       <Footer />
+      </ThemeProvider>
     </>
   );
 }
