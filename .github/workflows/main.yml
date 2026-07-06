@@ -11,7 +11,7 @@ jobs:
     # This applies the subfolder path to all steps below
     defaults:
       run:
-        working-directory: ./YOUR_SUBFOLDER_NAME
+        working-directory: ./frontend
 
     steps:
       - uses: actions/checkout@v7.0.0
