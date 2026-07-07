@@ -8,13 +8,18 @@ jobs:
   build-react-app:
     runs-on: ubuntu-latest
 
+    concurrency:
+      group: deploy
+      cancel-in-progress: true
+
     # This applies the subfolder path to all steps below
     defaults:
       run:
         working-directory: ./frontend
 
     steps:
-      - uses: actions/checkout@v7.0.0
+      - name: checkout repository
+        uses: actions/checkout@v7.0.0
 
       - name: Setup Nodejs
         uses: actions/setup-node@v6.4.0
@@ -27,6 +32,9 @@ jobs:
 
       - name: Build React App
         run: npm run build
+
+      - name: Deploy App
+        run: echo "Deploying App.."
 
       - name: Upload Build on Artifacts
         uses: actions/upload-artifact@v7.0.1
